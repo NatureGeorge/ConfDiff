@@ -255,7 +255,7 @@ def prepare_contact_map_ref(dataset_root, cutoff_A=10., n_proc=12):
     row_list = [row for _, row in metadata.iterrows()]
     process.mp_imap(
         func=_work_fn_prepare_contact_map_ref, iter=row_list, n_proc=n_proc,
-        data_root=data_root, cutoff_nm=cutoff_nm, output_root=output_root
+        data_root=data_root, cutoff_nm=cutoff_nm, output_root=output_dir
     )
 
 
