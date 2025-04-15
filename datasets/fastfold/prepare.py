@@ -215,6 +215,7 @@ def _work_fn_prepare_contact_map_ref(row, data_root, cutoff_nm, output_root):
     chain_name = row['chain_name']
     seqlen = row['seqlen']
     output_dir = Path(output_root)/chain_name
+    output_dir.mkdir(exist_ok=True)
     if output_dir.joinpath('contact_map.npy').exists():
         return
 
