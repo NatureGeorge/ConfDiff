@@ -255,7 +255,7 @@ def prepare_contact_map_ref(dataset_root, cutoff_A=10., n_proc=12):
     row_list = [row for _, row in metadata.iterrows()]
     process.mp_imap(
         func=_work_fn_prepare_contact_map_ref, iter=row_list, n_proc=n_proc,
-        data_root=data_root, cutoff_nm=cutoff_nm, output_dir=output_dir
+        data_root=data_root, cutoff_nm=cutoff_nm, output_root=output_root
     )
 
 
@@ -432,7 +432,7 @@ if __name__ == "__main__":
 
     # Step 1: survey and prepare traj data info
     survey_metadata_all_proteins(args.traj_root, args.output_root, n_proc=args.num_workers)
-    prepare_all_traj_data(args.traj_root, args.output_root/'processed', n_proc=args.num_workers)
+    prepare_all_traj_data(args.traj_root, Path(args.output_root/'processed'), n_proc=args.num_workers)
 
 
     # Step 2: precompute reference data from full MD
