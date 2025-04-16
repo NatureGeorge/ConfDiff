@@ -273,7 +273,8 @@ def prepare_PwD_ref(dataset_root, n_bins=PWD_BINS, n_proc=None):
     for _, row in metadata.iterrows():
         chain_name = row['chain_name']
         n_frame = row['total_frames']
-        ref_fpath = output_dir/f'{chain_name}_pwd_dist.npz'
+        ref_fpath = output_dir/chain_name/'pwd_dist.npz'
+        ref_fpath.parent.mkdir(exist_ok=True, parent=True)
         if ref_fpath.exists():
             continue
         print(f"Processing {CHAIN_NAME_TO_PROT_NAME[chain_name]}")
@@ -321,7 +322,8 @@ def prepare_Rg_ref(dataset_root, n_bins=RG_BINS, n_proc=None):
         chain_name = row['chain_name']
         seqlen = row['seqlen']
         n_frame = row['total_frames']
-        ref_fpath = output_dir/f'{chain_name}_rg_dist.npz'
+        ref_fpath = output_dir/chain_name/'rg_dist.npz'
+        ref_fpath.parent.mkdir(exist_ok=True, parent=True)
         if ref_fpath.exists():
             continue
 
